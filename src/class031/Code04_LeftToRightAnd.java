@@ -7,6 +7,10 @@ package class031;
 public class Code04_LeftToRightAnd {
 
 	public static int rangeBitwiseAnd(int left, int right) {
+		// 前面相同的位&肯定相同 
+		// 不同的肯定会消掉
+		// 要知道n&(n-1),可以消除掉最右侧的1
+		// right & -right 取到最右侧的1
 		while (left < right) {
 			right -= right & -right;
 		}

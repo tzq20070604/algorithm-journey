@@ -26,6 +26,7 @@ public class Code01_FillFunction {
 	}
 
 	// 求子数组的最大累加和，后面的课会讲
+	// 可以看成以某某结尾的最大累计和 又因为最少比0大，所以如果小于0就填写0
 	public static int maxSumSubarray(int[] arr, int m) {
 		int max = Integer.MIN_VALUE;
 		int cur = 0;

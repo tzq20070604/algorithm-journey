@@ -2,6 +2,7 @@ package class040;
 
 // N皇后问题
 // 测试链接 : https://leetcode.cn/problems/n-queens-ii/
+// https://leetcode.cn/problems/n-queens/
 public class NQueens {
 
 	// 用数组表示路径实现的N皇后问题，不推荐

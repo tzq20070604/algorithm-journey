@@ -38,6 +38,7 @@ public class Code02_ZigzagLevelOrderTraversal {
 				// reverse == true,  右 -> 左， r-1....l, 收集size个
 				// 左 -> 右, i = i + 1
 				// 右 -> 左, i = i - 1
+				// 本质上还是从左到右，只是从加到结果的时候从右到左
 				for (int i = reverse ? r - 1 : l, j = reverse ? -1 : 1, k = 0; k < size; i += j, k++) {
 					TreeNode cur = queue[i];
 					list.add(cur.val);

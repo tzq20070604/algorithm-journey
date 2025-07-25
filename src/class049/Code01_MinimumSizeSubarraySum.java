@@ -1,5 +1,7 @@
 package class049;
 
+import class009.ListReverse.Number;
+
 // 累加和大于等于target的最短子数组长度
 // 给定一个含有 n 个正整数的数组和一个正整数 target
 // 找到累加和 >= target 的长度最小的子数组并返回其长度

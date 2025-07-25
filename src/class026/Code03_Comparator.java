@@ -63,7 +63,7 @@ public class Code03_Comparator {
 		}
 		System.out.println(treeSet1.size());
 
-		// 会去重
+		// 会去重 任务2个 2.27 是一样的
 		treeSet1.add(new Employee(2, 27));
 		System.out.println(treeSet1.size());
 
@@ -75,6 +75,7 @@ public class Code03_Comparator {
 				: a.age != b.age ? (a.age - b.age) : a.toString().compareTo(b.toString()));
 		for (Employee e : arr) {
 			treeSet2.add(e);
+			System.out.println(e.toString());
 		}
 		System.out.println(treeSet2.size());
 

@@ -17,6 +17,7 @@ public class Code01_Bitset {
 
 		// n个数字 : 0~n-1
 		public Bitset(int n) {
+			// 可以使用a = nb 或a = nb+x来验证
 			// a/b如果结果想向上取整，可以写成 : (a+b-1)/b
 			// 前提是a和b都是非负数
 			set = new int[(n + 31) / 32];

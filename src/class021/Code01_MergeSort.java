@@ -59,8 +59,8 @@ public class Code01_MergeSort {
 		mergeSort1(m + 1, r);
 		merge(l, m, r);
 	}
-
-	// 归并排序非递归版
+// 汤沐恩 汤志强 包慧慧 包靖恩
+ 	// 归并排序非递归版
 	// 时间复杂度O(n * logn)
 	// 空间复杂度O(n)
 	public static void mergeSort2() {

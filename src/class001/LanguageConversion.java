@@ -5,8 +5,18 @@ package class001;
 // 这里只是想说明代码语言的转换并不困难
 // 整个系列虽然都是java讲的，但使用不同语言的同学听懂思路之后，想理解代码真的不是问题
 // 语言问题并不是学习算法的障碍，有了人工智能工具之后，就更不是障碍了
-public class LanguageConversion {
 
+
+
+public class LanguageConversion {
+	public static void main(String[] args){
+	    int[] nums = {9,10,6,-5,8,9,0,56};
+        Solution.sortArray(nums);
+		for (int i = 0;i < nums.length; i++){
+           System.out.println(nums[i]);
+		}
+    }
+	
 	class Solution {
 
 		public static int[] sortArray(int[] nums) {
@@ -22,6 +32,7 @@ public class LanguageConversion {
 		public static int[] help = new int[MAXN];
 
 		public static void mergeSort(int[] arr) {
+			// 每次排列步长为2 4 8，关键是确定左 中 右 边界
 			int n = arr.length;
 			for (int l, m, r, step = 1; step < n; step <<= 1) {
 				l = 0;
@@ -31,6 +42,7 @@ public class LanguageConversion {
 						break;
 					}
 					r = Math.min(l + (step << 1) - 1, n - 1);
+					// 搞定l、m、r
 					merge(arr, l, m, r);
 					l = r + 1;
 				}
@@ -131,7 +143,13 @@ public class LanguageConversion {
 				l = i * 2 + 1;
 			}
 		}
+		public static void main(){
+			int[] nums = {4,5,7,2,0,-3};
+			heapSort(nums);
+			System.out.println(nums);
+		}
 
 	}
 
 }
+

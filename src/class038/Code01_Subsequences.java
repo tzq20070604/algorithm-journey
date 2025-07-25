@@ -49,6 +49,7 @@ public class Code01_Subsequences {
 		if (i == s.length) {
 			set.add(String.valueOf(path, 0, size));
 		} else {
+			// 这个size 就是当前path中有效数据的长度
 			path[size] = s[i];
 			f2(s, i + 1, path, size + 1, set);
 			f2(s, i + 1, path, size, set);

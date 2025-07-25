@@ -77,15 +77,15 @@ public class ListReverse {
 	class Solution {
 
 		public static ListNode reverseList(ListNode head) {
-			ListNode pre = null;
+			ListNode newHead = null;
 			ListNode next = null;
 			while (head != null) {
 				next = head.next;
-				head.next = pre;
-				pre = head;
+				head.next = newHead;
+				newHead = head;
 				head = next;
 			}
-			return pre;
+			return newHead;
 		}
 
 	}
@@ -105,16 +105,16 @@ public class ListReverse {
 	// 没有找到测试链接
 	// 如下方法是对的
 	public static DoubleListNode reverseDoubleList(DoubleListNode head) {
-		DoubleListNode pre = null;
+		DoubleListNode newHead = null;
 		DoubleListNode next = null;
 		while (head != null) {
 			next = head.next;
-			head.next = pre;
+			head.next = newHead;
 			head.last = next;
-			pre = head;
+			newHead = head;
 			head = next;
 		}
-		return pre;
+		return newHead;
 	}
 
 }

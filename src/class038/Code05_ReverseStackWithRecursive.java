@@ -18,9 +18,12 @@ public class Code05_ReverseStackWithRecursive {
 	// 返回移除掉的栈底元素
 	public static int bottomOut(Stack<Integer> stack) {
 		int ans = stack.pop();
+		// 条件1
 		if (stack.isEmpty()) {
+			// 这里没有加上stack.push(ans)，所以移除了栈顶元素
 			return ans;
 		} else {
+			// 拿到条件1，一直往上传
 			int last = bottomOut(stack);
 			stack.push(ans);
 			return last;

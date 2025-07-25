@@ -36,7 +36,7 @@ public class Code05_MaximalRectangle {
 		r = 0;
 		int ans = 0, cur, left;
 		for (int i = 0; i < m; i++) {
-			// i -> arr[i]
+			// i -> arr[i],这个是按照严格的模版来的
 			while (r > 0 && height[stack[r - 1]] >= height[i]) {
 				cur = stack[--r];
 				left = r == 0 ? -1 : stack[r - 1];

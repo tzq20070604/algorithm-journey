@@ -13,6 +13,7 @@ public class Code05_MedianFinder {
 		private PriorityQueue<Integer> minHeap;
 
 		public MedianFinder() {
+			// 并且小根堆的数
 			maxHeap = new PriorityQueue<>((a, b) -> b - a);
 			minHeap = new PriorityQueue<>((a, b) -> a - b);
 		}

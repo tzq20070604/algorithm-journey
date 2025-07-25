@@ -1,0 +1,19 @@
+{
+    "platform" : "Android",
+    "excelPath" : "../importExcel.xlsx",
+    "excelSheetNum" : 0,
+    "excelLanguageRow" : 0,
+    "excelKeyCol" : 0,
+    "excelKeyRowStart" : 1,
+    "excelKeyRowEnd" : 100000,
+    "excelLanguage2StringsFileName": [["English","en"], ["Arabic","ar"], ["Burmese","my"], ["CHINE_HK","zh-HK"], ["CHINE_NEW","zh"], ["CHINE_OLD","zh-TW"], ["Czech","cs"], ["Danish","da"], ["Dutch","nl"], ["Estonian","et"], ["Finnish","fi"], ["French","fr"], ["German","de"], ["Greek","el"], ["Hebrew","he"], ["Hungarian","hu"], ["Indonesian","id"], ["Italian","it"], ["Latvian","lv"], ["Norwegian","nb"], ["Polish","pl"], ["Portuguese","pt"], ["Romanian","ro"], ["Russian","ru"], ["Serbian","sr"], ["Slovak","sk"], ["Spanish","es"], ["Swedish","sv"], ["Tagalog","tl"], ["Thai","th"], ["Turkish","tr"], ["Ukrainian","uk"], ["Vietnamese","vi"], ["Bulgarian","bg"], ["Japanese","ja"]],
+    "excelKeyPattern": "^\\s*S\\s*:\\s*thome\\s*:\\s*(?P<key>.*?)\\s*$",
+    
+    "stringsFolderPath" : "../dist/Android",
+    "stringsFileName": "values-{}/strings.xml",
+   
+    "exportExcelPath" : "../exportExcel.xlsx",
+    "exportExcelKeyFormat" : "S:thome:{}",
+    
+    "removeKeys": ["th_label_switch_region_1", "th_let_phone_close_tv"]
+}

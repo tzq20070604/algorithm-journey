@@ -32,12 +32,17 @@ public class Code07_HouseRobberIII {
 		} else {
 			int y = root.val;
 			int n = 0;
+            
 			f(root.left);
+			// 当root偷时，当root不偷时
 			y += no;
 			n += Math.max(yes, no);
+
 			f(root.right);
+			// 当root偷时，当root不偷时
 			y += no;
 			n += Math.max(yes, no);
+
 			yes = y;
 			no = n;
 		}

@@ -21,7 +21,8 @@ public class Code06_SortStackWithRecursive {
 			deep -= k;
 		}
 	}
-
+    // 整体思维 很重要 很经典
+	// deep的含义就是栈有多深，如果我这边先减去一个元素知道栈有多深，那么就加上这个元素以后，恢复栈的原貌，再返回深度。
 	// 返回栈的深度
 	// 不改变栈的数据状况
 	public static int deep(Stack<Integer> stack) {

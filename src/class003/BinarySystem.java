@@ -1,5 +1,4 @@
 package class003;
-
 // 本文件的实现是用int来举例的
 // 对于long类型完全同理
 // 不过要注意，如果是long类型的数字num，有64位
@@ -57,6 +56,9 @@ public class BinarySystem {
 		System.out.println(e);
 		printBinary(e);
 		System.out.println("===e===");
+        
+		int aaa = 0b11111111111111111111111110110010;
+		System.out.println(aaa);
 		// int、long的最小值，取相反数、绝对值，都是自己
 		int f = Integer.MIN_VALUE;
 		System.out.println(f);

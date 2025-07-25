@@ -139,6 +139,7 @@ public class Code03_TopoSortStaticLuogu {
 		int fill = 0;
 		while (!isEmpty()) {
 			int cur = pop();
+			// 取出来的时候是答案
 			ans[fill++] = cur;
 			// 用链式前向星的方式，遍历cur的相邻节点
 			for (int ei = head[cur]; ei != 0; ei = next[ei]) {

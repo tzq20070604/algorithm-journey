@@ -28,14 +28,14 @@ public class Code01_MergeKSortedLists {
 		}
 		// 先弹出一个节点，做总头部
 		ListNode h = heap.poll();
-		ListNode pre = h;
-		if (pre.next != null) {
-			heap.add(pre.next);
+		ListNode cur = h;
+		if (cur.next != null) {
+			heap.add(cur.next);
 		}
 		while (!heap.isEmpty()) {
-			ListNode cur = heap.poll();
-			pre.next = cur;
-			pre = cur;
+			ListNode minNode = heap.poll();
+			cur.next = minNode;
+			cur = minNode;
 			if (cur.next != null) {
 				heap.add(cur.next);
 			}

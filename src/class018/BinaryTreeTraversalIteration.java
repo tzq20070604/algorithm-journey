@@ -164,7 +164,7 @@ public class BinaryTreeTraversalIteration {
 		return ans;
 	}
 
-	// 用两个栈完成后序遍历
+	// 用两个栈完成后序遍历 其实就是先序遍历的倒置
 	// 提交时函数名改为postorderTraversal
 	// 测试链接 : https://leetcode.cn/problems/binary-tree-postorder-traversal/
 	public static List<Integer> postorderTraversalTwoStacks(TreeNode head) {
@@ -191,6 +191,7 @@ public class BinaryTreeTraversalIteration {
 	}
 
 	// 用一个栈完成后序遍历
+	// 弹出的时候 比较是弹出左节点还是有节点
 	// 提交时函数名改为postorderTraversal
 	// 测试链接 : https://leetcode.cn/problems/binary-tree-postorder-traversal/
 	public static List<Integer> postorderTraversalOneStack(TreeNode h) {

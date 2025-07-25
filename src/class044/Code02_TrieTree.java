@@ -121,5 +121,4 @@ public class Code02_TrieTree {
 		in.close();
 		out.close();
 	}
-
 }

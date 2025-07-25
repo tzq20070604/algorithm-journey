@@ -42,7 +42,7 @@ public class Code07_AllO1 {
 
 		public AllOne() {
 			head = new Bucket("", 0);
-			tail = new Bucket("", Integer.MAX_VALUE);
+			tail = new Bucket("", 0);
 			head.next = tail;
 			tail.last = head;
 			map = new HashMap<>();

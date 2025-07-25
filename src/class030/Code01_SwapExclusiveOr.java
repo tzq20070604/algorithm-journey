@@ -21,7 +21,7 @@ public class Code01_SwapExclusiveOr {
 	}
 
 	// 当i!=j，没问题，会完成交换功能
-	// 当i==j，会出错
+	// 当i==j，会出错,确实得注意 必须有2个数
 	// 所以知道这种写法即可，并不推荐
 	public static void swap(int[] arr, int i, int j) {
 		arr[i] = arr[i] ^ arr[j];

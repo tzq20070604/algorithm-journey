@@ -64,6 +64,7 @@ public class Code03_WordSearchII {
 		fix += dfs(board, i + 1, j, t, ans);
 		fix += dfs(board, i, j - 1, t, ans);
 		fix += dfs(board, i, j + 1, t, ans);
+		// 将收集过的从前缀树中移除，以后遇到的也会立即返回
 		pass[t] -= fix;
 		board[i][j] = tmp;
 		return fix;
