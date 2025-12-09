@@ -1,5 +1,5 @@
 package class097;
-
+// 最关键的风险是，当可用的测试基数 nums[i]少于算法推荐的最小数量时，测试的可靠性会急剧下降。
 // 判断较大的数字是否是质数(Miller-Rabin测试)
 // 测试链接 : https://www.luogu.com.cn/problem/U148828
 // 如下代码无法通过所有测试用例

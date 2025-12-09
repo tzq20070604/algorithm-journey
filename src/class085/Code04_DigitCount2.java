@@ -42,17 +42,18 @@ public class Code04_DigitCount2 {
 
 	public static long count(long num, int d) {
 		long ans = 0;
-		for (long right = 1, tmp = num, left, cur; tmp != 0; right *= 10, tmp /= 10) {
+		for (long base = 1, tmp = num, left, right,cur; tmp != 0; base *= 10, tmp /= 10) {
 			left = tmp / 10;
+			right = num % base;
 			if (d == 0) {
 				left--;
 			}
-			ans += left * right;
+			ans += left * base;
 			cur = tmp % 10;
 			if (cur > d) {
-				ans += right;
+				ans += base;
 			} else if (cur == d) {
-				ans += num % right + 1;
+				ans += right + 1;
 			}
 		}
 		return ans;

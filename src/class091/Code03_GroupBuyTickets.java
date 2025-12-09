@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 // 组团买票
 // 景区里一共有m个项目，景区的第i个项目有如下两个参数：
 // game[i] = { Ki, Bi }，Ki、Bi一定是正数
+// price[i] = Bi - Ki * n
 // Ki代表折扣系数，Bi代表票价
 // 举个例子 : Ki = 2, Bi = 10
 // 如果只有1个人买票，单张门票的价格为 : Bi - Ki * 1 = 8

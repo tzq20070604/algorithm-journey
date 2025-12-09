@@ -58,8 +58,9 @@ public class Code05_Dancing {
 
 	public static void addEdge(int u, int v) {
 		next[cnt] = head[u];
+        head[u] = cnt;
 		to[cnt] = v;
-		head[u] = cnt++;
+		cnt++;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -106,5 +107,4 @@ public class Code05_Dancing {
 			yes[u] += no[v];
 		}
 	}
-
 }

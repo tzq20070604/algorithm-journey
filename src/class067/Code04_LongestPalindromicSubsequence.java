@@ -61,6 +61,7 @@ public class Code04_LongestPalindromicSubsequence {
 		char[] s = str.toCharArray();
 		int n = s.length;
 		int[][] dp = new int[n][n];
+		// 这里l开始可以理解为距离最后一个元素的长度
 		for (int l = n - 1; l >= 0; l--) {
 			dp[l][l] = 1;
 			if (l + 1 < n) {

@@ -16,6 +16,8 @@ public class Code04_MeetingRoomsII {
 		PriorityQueue<Integer> heap = new PriorityQueue<>();
 		int ans = 0;
 		for (int i = 0; i < n; i++) {
+			// 重合线段最多的左侧一定对于着某条线段的左侧
+			// 判断每个开始位置，前面的结束位置能够冲过开始位置有多少就是
 			while (!heap.isEmpty() && heap.peek() <= meeting[i][0]) {
 				heap.poll();
 			}

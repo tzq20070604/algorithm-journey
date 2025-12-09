@@ -58,7 +58,7 @@ public class Code04_FillCellsUseAllColorsWays {
 	public static int ways2(int n, int m) {
 		// dp[i][j]:
 		// 一共有m种颜色
-		// 前i个格子涂满j种颜色的方法数
+		// 前i个格子涂满j种颜色的方法数,注意是涂满
 		for (int i = 1; i <= n; i++) {
 			dp[i][1] = m;
 		}

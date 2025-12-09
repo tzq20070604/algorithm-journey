@@ -26,8 +26,12 @@ public class Code04_Stock4 {
 			return free(prices);
 		}
 		int[][] dp = new int[k + 1][n];
+		//有i次机会，当前在第j天，能获得的最大收益
+		// 要么在j天没有操作，要么在j天卖出
+		// 说明i-1次机会可以在[0,p]上面完成，在[p,j]完成最后一次交易
 		for (int i = 1; i <= k; i++) {
 			for (int j = 1; j < n; j++) {
+                // 当前不操作
 				dp[i][j] = dp[i][j - 1];
 				for (int p = 0; p < j; p++) {
 					dp[i][j] = Math.max(dp[i][j], dp[i - 1][p] + prices[j] - prices[p]);

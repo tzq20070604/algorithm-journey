@@ -1,4 +1,4 @@
-package class097;
+// package class097;
 
 // 计数质数
 // 给定整数n，返回小于非负整数n的质数的数量
@@ -16,8 +16,12 @@ public class Code04_EhrlichAndEuler {
 		// visit[i] = false，代表i是质数
 		// 初始时认为0~n所有数都是质数
 		boolean[] visit = new boolean[n + 1];
+		// 使用因子i进行筛选
 		for (int i = 2; i * i <= n; i++) {
+			// 这个因子之前未被筛选过
 			if (!visit[i]) {
+				// 显然至少从自己开始，因为来到这一步，说明比i小的因子都被筛选过
+				// 没有必要使用j = i开始
 				for (int j = i * i; j <= n; j += i) {
 					visit[j] = true;
 				}

@@ -53,5 +53,4 @@ public class Code04_NumbersWithRepeatedDigits {
 		}
 		return ans;
 	}
-
 }

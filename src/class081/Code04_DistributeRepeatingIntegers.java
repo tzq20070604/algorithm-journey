@@ -38,6 +38,7 @@ public class Code04_DistributeRepeatingIntegers {
 		for (int i = 0, v, h; i < quantity.length; i++) {
 			v = quantity[i];
 			h = 1 << i;
+			// 假设i位上面已经是1，其他的位置的情况
 			for (int j = 0; j < h; j++) {
 				sum[h | j] = sum[j] + v;
 			}

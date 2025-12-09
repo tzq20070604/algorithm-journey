@@ -8,12 +8,41 @@ var trapRainWater = function(heightMap) {
     if (n*m <= 4){
         return 0
     }
-    CircularDeque
+    let heap = new Heap(Heap.HeapType.SMALL,(item1,item2)=>{
+        return item1[2] - item2[2]
+    })
     for(let i = 0;i < n; i++){
-        heightMap[0][i]
-        heightMap[m-1][i]
+        heap.insert([0,i,heightMap[0][i]]) 
+        heap.insert([m-1,i,heightMap[m-1][i]]) 
     }
+    for(let j = 1; j < m-1; j++){
+        heap.insert([j,0,heightMap[j][0]]) 
+        heap.insert([j,n-1,heightMap[j][n-1]]) 
+    }
+    let res = 0
+    while(!heap.isEmpty()){
+        let [x, y, h] = heap.pop()
+        if (heightMap[x][y] == -1){
+            continue
+        } else {
+           // h 是一定大于等于heightMap[x][y]的，放入队列的时候已经决定
+            res += (h - heightMap[x][y])
+            heightMap[x][y] = -1
+            // 它四周的可以结算
+            let derect = [[1,0],[-1,0],[0,1],[0,-1]]
+            for(let [delx,dely] of derect){
+                let [x1, y1] = [x+delx, y+dely]
+                if (x1 < 0 || x1 >= m || y1 < 0 || y1 >= n || (heightMap[x1][y1] == -1)){
+                    continue
+                }
+                // 放入的就是这个点最大水位高度，超出这个高度就要计算了
+                heap.insert([x1,y1,Math.max(heightMap[x1][y1],h)]) 
+            }
+        }
+    }
+    return res
 };
+
 class Heap {
     static HeapType = {
         SMALL:'small',
@@ -25,6 +54,12 @@ class Heap {
     sortFunc = function(item1, item2){ return item1 - item2}
 
     constructor(type, sortFunc){
+       if (type == undefined) {
+         this.type = Heap.HeapType.SMALL
+       }
+       if (sortFunc == undefined){
+           sortFunc = this.sortFunc
+       }
        if (type == Heap.HeapType.BIG){
            this.sortFunc = function(item1, item2){
                return 0 - sortFunc(item1, item2)
@@ -71,10 +106,7 @@ class Heap {
        }
        return tmp 
     }
-    size(){
-        return this.size
-    }
-
+    
     isEmpty(){
         return this.size == 0
     }
@@ -107,4 +139,6 @@ class Heap {
     }
 }
 
-module.exports = Heap;
+// module.exports = Heap;
+
+var heap = new Heap()

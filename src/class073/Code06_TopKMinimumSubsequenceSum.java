@@ -3,7 +3,7 @@ package class073;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
-
+// 
 // 非负数组前k个最小的子序列累加和
 // 给定一个数组nums，含有n个数字，都是非负数
 // 给定一个正数k，返回所有子序列中累加和最小的前k个累加和
@@ -48,6 +48,7 @@ public class Code06_TopKMinimumSubsequenceSum {
 		for (int num : nums) {
 			sum += num;
 		}
+		// 前i个数，累积和等于j，有几个
 		// dp[i][j]
 		// 1) dp[i-1][j]
 		// 2) dp[i-1][j-nums[i]

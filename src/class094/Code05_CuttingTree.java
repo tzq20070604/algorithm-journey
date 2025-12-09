@@ -7,6 +7,7 @@ package class094;
 // 这棵树的初始重量 + 这棵树增长到这一天的总增重
 // 从第1天开始，你一共有m天可以砍树，返回m天内你获得的最大收益
 // 测试链接 : https://pintia.cn/problem-sets/91827364500/exam/problems/91827367873
+//https://pintia.cn/problem-sets/91827364500/exam/problems/type/7?problemSetProblemId=91827367873&page=22
 // 请同学们务必参考如下代码中关于输入、输出的处理
 // 这是输入输出处理效率很高的写法
 // 提交以下的code，提交时请把类名改成"Main"，可以直接通过

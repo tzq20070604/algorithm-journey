@@ -45,6 +45,7 @@ public class Code02_EditDistance {
 				if (s1[i - 1] != s2[j - 1]) {
 					p2 = dp[i - 1][j - 1] + c;
 				}
+				// a 插入 b 删除 c替换
 				int p3 = dp[i][j - 1] + a;
 				int p4 = dp[i - 1][j] + b;
 				dp[i][j] = Math.min(Math.min(p1, p2), Math.min(p3, p4));

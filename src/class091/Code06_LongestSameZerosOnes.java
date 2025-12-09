@@ -1,4 +1,4 @@
-package class091;
+// package class091;
 
 import java.util.HashMap;
 
@@ -10,11 +10,11 @@ import java.util.HashMap;
 // 返回区间最大长度
 // 来自真实大厂笔试，没有在线测试，对数器验证
 public class Code06_LongestSameZerosOnes {
-
 	// 暴力方法
 	// 为了验证
 	public static int len1(int[] arr) {
 		HashMap<Integer, HashMap<Integer, Integer>> map = new HashMap<>();
+		//求[i,j]之间0和1的数量
 		for (int i = 0; i < arr.length; i++) {
 			int zero = 0;
 			int one = 0;

@@ -61,5 +61,4 @@ public class Code01_BashGameSG {
 		int m = 6;
 		bash2(n, m);
 	}
-
 }

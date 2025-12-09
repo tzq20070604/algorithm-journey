@@ -61,6 +61,7 @@ public class Code03_TargetSum {
 			return 0;
 		}
 		int n = nums.length;
+		// 由[-s,s]平移到[0,2s]
 		// -s ~ +s -> 2 * s + 1
 		int m = 2 * s + 1;
 		// 原本的dp[i][j]含义:

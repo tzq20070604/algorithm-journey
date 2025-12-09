@@ -1,4 +1,4 @@
-package class097;
+// package class097;
 
 // 判断较大的数字是否是质数(Miller-Rabin测试)
 // 测试链接 : https://www.luogu.com.cn/problem/U148828

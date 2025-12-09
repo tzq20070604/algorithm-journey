@@ -1,5 +1,3 @@
-const { read } = require('fs')
-
 const rl = require('readline').createInterface({input:process.stdin})
 var lineNo = 0
 var nums = []

@@ -1,4 +1,4 @@
-package class096;
+// package class096;
 
 import java.util.Arrays;
 

@@ -24,7 +24,7 @@ public class Code03_Stock3 {
 			// 第二次交易一定要在i时刻卖出
 			for (int j = 0; j <= i; j++) {
 				// 枚举第二次交易的买入时机j <= i
-				dp2[i] = Math.max(dp2[i], dp1[j] + prices[i] - prices[j]);
+				dp2[i] = Math.max(dp2[i], dp1[j] - prices[j]+ prices[i]);
 			}
 			ans = Math.max(ans, dp2[i]);
 		}
