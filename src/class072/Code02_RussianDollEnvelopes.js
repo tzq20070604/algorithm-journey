@@ -11,7 +11,7 @@ var maxEnvelopes1 = function(envelopes) {
             return a[1] - b[1]
         }
     })
-    // 高度严格递增的子序列，只是宽度相同时，只能选择一个，可以考虑以index结尾的套娃的最大个数
+    // 高度严格递增的子序列，只是宽度相同时，只能选择一个，如果是正序，就分不清是否宽度一致，可以考虑以index结尾的套娃的最大个数
     var dp = Array(envelopes.length).fill(1)
     dp[0] = 1
     let res = 1

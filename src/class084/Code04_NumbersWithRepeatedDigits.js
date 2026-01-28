@@ -40,8 +40,8 @@ let nums,cnt
 /**
  * 在前面已经选择且不为0且各位都不相同的的情况下有多少种选择方案
  * @param {*} cur 当前来到那一位
- * @param {*} freeSel 当前位是否可以自由选择
- * @param {*} state 那些数字已经选择 0 表示没有选择 1 表示已经选择过了
+ * @param {*} freeSel 当前位是否可以自由选择 0不可以自由选择 1可以自由选择
+ * @param {*} state 那些数字已经选择， 0 表示没有选择 1 表示已经选择过了
  */
 function f(cur,freeSel,state){
     if (cur == nums.length){
@@ -50,7 +50,7 @@ function f(cur,freeSel,state){
     let num = nums[cur]
     if (freeSel){
         return cnt[nums.length - cur]
-    } else {
+    } else { // 不能自由选择
         let ans = 0
         // 当前数字比nums[cur]小的
         for(let i = 0;i < num;i++){

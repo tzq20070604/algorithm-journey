@@ -2,5 +2,10 @@
     "java.project.sourcePaths": [
         "src"
     ],
-    "java.project.referencedLibraries": []
+    "java.project.referencedLibraries": [],
+    "editor.codeActionsOnSave": {
+
+    },
+    "typescript.suggest.jsdoc.generateReturns": true,
+    "javascript.suggest.jsdoc.generateReturns": true
 }

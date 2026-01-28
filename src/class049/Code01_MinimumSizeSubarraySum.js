@@ -13,7 +13,7 @@ var minSubArrayLen = function(target, nums) {
             continue
          }
          // 窗口满足条件，
-         // 能否调整左侧窗口
+         // 能否调整左侧窗口,直到不能调整为止
          while (sum - nums[l] >= target){
             sum -= nums[l]
             l++

@@ -6,7 +6,7 @@ function swap(nums,i,j){
     }
 }
 function insertSort(nums){
-    // 外层循环是记录要插入第几个数
+    // 外层循环是记录要插入第几个数，其实这里有序的可以有二分查找法，但是因为要交换位置，所以很麻烦
     for (var i = 1; i < nums.length; i++){
         for (var j = i; j > 0; j--){
             if (nums[j] < nums[j - 1]){

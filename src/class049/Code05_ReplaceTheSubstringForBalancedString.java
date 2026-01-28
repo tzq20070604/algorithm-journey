@@ -24,7 +24,9 @@ public class Code05_ReplaceTheSubstringForBalancedString {
 			if (cnts[i] < n / 4) {
 				cnts[i] = 0;
 			} else {
+				// 该字符需要消掉的个数
 				cnts[i] = n / 4 - cnts[i];
+				// 需要消掉的总个数
 				debt -= cnts[i];
 			}
 		}
@@ -32,6 +34,7 @@ public class Code05_ReplaceTheSubstringForBalancedString {
 			return 0;
 		}
 		int ans = Integer.MAX_VALUE;
+		// 窗口就是要替换的字符串
 		for (int l = 0, r = 0; r < n; r++) {
 			if (cnts[s[r]]++ < 0) {
 				debt--;

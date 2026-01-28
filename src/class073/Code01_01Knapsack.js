@@ -13,8 +13,11 @@
 //     }
 // })
 
-function compute(arr){
-     return arr
+function calculate(time,arr){
+    let dp = new Array(arr.length).fill(0).map(()=>{
+        return new Array(time+1).fill(-1)
+    })
+    return recursion(0,time,arr,dp)
 }
 
 function recursion(index,time, arr, dp){

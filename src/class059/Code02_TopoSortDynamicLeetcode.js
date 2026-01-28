@@ -4,15 +4,15 @@
  * @return {number[]}
  */
 var findOrder = function(numCourses, prerequisites) {
-    var ingreeArr = Array(numCourses + 1).fill(0)
-    build(numCourses + 1,prerequisites.length)
+    var ingreeArr = Array(numCourses).fill(0)
+    build(numCourses,prerequisites.length)
     for (var i = 0; i < prerequisites.length; i++){
         var [p1,p2] = prerequisites[i]
-        ingreeArr[p1 + 1]++
-        addEdge([p2 + 1,p1 + 1])
+        ingreeArr[p1]++
+        addEdge([p2,p1])
     }
     //console.log("ingreeArr", ingreeArr)
-    for (var i = 1; i < numCourses + 1; i++){
+    for (var i = 0; i < numCourses; i++){
         let ingree = ingreeArr[i]
         if (ingree == 0){
             queue[r++] = i
@@ -33,7 +33,7 @@ var findOrder = function(numCourses, prerequisites) {
     }
     if (r == numCourses){
         return queue.slice(0,r).map((item)=>{
-            return item - 1
+            return item
         })
     } else {
         return []

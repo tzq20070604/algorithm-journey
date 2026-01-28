@@ -21,11 +21,11 @@ public class Code03_DiffMatrixLuogu {
 
 	public static int n, q;
 
-	public static void add(int a, int b, int c, int d, int k) {
-		diff[a][b] += k;
-		diff[c + 1][b] -= k;
-		diff[a][d + 1] -= k;
-		diff[c + 1][d + 1] += k;
+	public static void add(int r1, int c1, int r2, int c2, int k) {
+		diff[r1][c1] += k;
+		diff[r2 + 1][c1] -= k;
+		diff[r1][c2 + 1] -= k;
+		diff[r2 + 1][c2 + 1] += k;
 	}
 
 	public static void build() {

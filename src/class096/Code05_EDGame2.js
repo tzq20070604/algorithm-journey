@@ -11,6 +11,7 @@ rl.on('line',(line)=>{
     }
 })
 
+// 独立 异或即可
 function win(arr){
     let ans = 0
     for(let i = 0; i < arr.length;i+=2){

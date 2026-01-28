@@ -62,7 +62,7 @@ public class ConvertQueueAndStack {
 			queue = new LinkedList<Integer>();
 		}
 
-		// O(n) 每来一个就将其他的从队列尾部进入
+		// O(n) 每来一个就将其他的从队列尾部进入 绕一个圈
 		public void push(int x) {
 			int n = queue.size();
 			queue.offer(x);

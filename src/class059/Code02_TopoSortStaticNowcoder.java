@@ -89,6 +89,7 @@ public class Code02_TopoSortStaticNowcoder {
 
 	public static boolean topoSort() {
 		l = r = 0;
+		// 注意这里 从1开始
 		for (int i = 1; i <= n; i++) {
 			if (indegree[i] == 0) {
 				queue[r++] = i;

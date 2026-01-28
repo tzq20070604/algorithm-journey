@@ -28,3 +28,6 @@ function getSize(num){
     }
     return a
 }
+
+// let ans = [0,0,0].join('').replace(/^0+(?=[0-9])/,'')
+// console.log(ans)

@@ -13,7 +13,7 @@ var findMaxForm = function(strs, m, n) {
     for(let i = 1; i <= strs.length; i++){
         let str = strs[i-1]
         let [zero,one] = calculate0or1(str)
-        // 后i个字符串，在0不大于j,1不大于k的情况下的方法数
+        // 前i个字符集，在0不大于j,1不大于k的情况下的方法数
         for(let j = 0; j <= m; j++){
             for(let k = 0; k <= n; k++){
                 dp[i][j][k] = dp[i-1][j][k]

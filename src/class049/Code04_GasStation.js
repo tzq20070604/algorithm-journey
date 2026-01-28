@@ -1,4 +1,6 @@
 /**
+ * 关键是如果某个点l开始绕不了一圈，假设r点断了，则说明[l,r-1]之间的点都不能到达，从r点开始重新计算
+ * 另外注意取余的妙用
  * @param {number[]} gas
  * @param {number[]} cost
  * @return {number}

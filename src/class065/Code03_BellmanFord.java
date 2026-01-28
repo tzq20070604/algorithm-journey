@@ -20,6 +20,7 @@ public class Code03_BellmanFord {
 		cur[start] = 0;
 		for (int i = 0; i <= k; i++) {
 			int[] next = Arrays.copyOf(cur, n);
+			// 一轮松弛
 			for (int[] edge : flights) {
 				// a -> b , w
 				if (cur[edge[0]] != Integer.MAX_VALUE) {

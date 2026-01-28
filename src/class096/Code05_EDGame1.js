@@ -5,7 +5,9 @@ let MAXN = 1000
 let dp = Array(MAXN + 1).fill(0).map(()=>{
     return Array(MAXN + 1).fill(-1)
 })
-
+//每个状态都有sg值
+// 后续的状态依赖前面的状态
+// sg[x][y] == 0 先手输 否则后手输
 function computeSg1(x,y){
     if (x * y == 1){
         dp[x][y] = 0

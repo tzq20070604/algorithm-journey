@@ -19,6 +19,7 @@ public class Complexity {
 			if (i < end - 1) {
 				i++;
 			} else {
+				// 这里其实很鸡贼 i = 0
 				end--;
 				i = 0;
 			}

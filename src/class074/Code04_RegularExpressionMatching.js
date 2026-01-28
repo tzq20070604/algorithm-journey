@@ -36,13 +36,14 @@ function f(l1,l2,s,p,dp){
     } else {
         // l2是否有下一位，该位是否为星
         if (l2 + 1 <= p.length){
-            let res1 = f(l1,l2 + 2,s,p,dp)
             let res2 = false
             if (p[l2] == "*"){
                 // 可配
                 if(p[l2-1] == "." || s[l1 - 1] == p[l2-1]){
                     res2 = f(l1+1,l2,s,p,dp)
                 }
+                //不配
+                let res1 = f(l1,l2 + 2,s,p,dp)
                 res = res1 || res2
             } else {
                 if(p[l2-1] != "." && s[l1 - 1] != p[l2-1]){

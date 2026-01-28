@@ -1,4 +1,4 @@
-package class031;
+// package class031;
 
 // 逆序二进制的状态
 // 测试链接 : https://leetcode.cn/problems/reverse-bits/
@@ -15,4 +15,7 @@ public class Code05_ReverseBits {
 		return n;
 	}
 
+	public static void main(String[] args){
+         System.out.printf("%d",reverseBits(43261596));
+	}
 }

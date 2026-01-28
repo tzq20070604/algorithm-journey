@@ -70,6 +70,7 @@ public class Code03_FallingWaterSmallestFlowerPot {
 			if (ok()) {
 				ans = Math.min(ans, arr[r - 1][0] - arr[l][0]);
 			}
+			// 这里可以只缩一个，因为后面回验证
 			pop(l);
 		}
 		return ans;

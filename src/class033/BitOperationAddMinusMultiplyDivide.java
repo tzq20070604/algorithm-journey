@@ -7,6 +7,40 @@ public class BitOperationAddMinusMultiplyDivide {
 
 	public static int MIN = Integer.MIN_VALUE;
 
+	public static int add(int a, int b) {
+		int ans = a;
+		while (b != 0) {
+			// ans : a和b无进位相加的结果
+			ans = a ^ b;
+			// b : a和b相加时的进位信息
+			b = (a & b) << 1;
+			a = ans;
+		}
+		return ans;
+	}
+
+	public static int minus(int a, int b) {
+		return add(a, neg(b));
+	}
+
+	public static int neg(int n) {
+		return add(~n, 1);
+	}
+
+	// 这种乘法后面有大用处，尤其是求(a的b次方 % m)的结果，也叫龟速乘
+	public static int multiply(int a, int b) {
+		int ans = 0;
+		while (b != 0) {
+			if ((b & 1) != 0) {
+				// 考察b当前最右的状态！
+				ans = add(ans, a);
+			}
+			a <<= 1;
+			b >>>= 1;
+		}
+		return ans;
+	}
+
 	public static int divide(int a, int b) {
 		if (a == MIN && b == MIN) {
 			// a和b都是整数最小
@@ -43,40 +77,6 @@ public class BitOperationAddMinusMultiplyDivide {
 			}
 		}
 		return a < 0 ^ b < 0 ? neg(ans) : ans;
-	}
-
-	public static int add(int a, int b) {
-		int ans = a;
-		while (b != 0) {
-			// ans : a和b无进位相加的结果
-			ans = a ^ b;
-			// b : a和b相加时的进位信息
-			b = (a & b) << 1;
-			a = ans;
-		}
-		return ans;
-	}
-
-	public static int minus(int a, int b) {
-		return add(a, neg(b));
-	}
-
-	public static int neg(int n) {
-		return add(~n, 1);
-	}
-
-	// 这种乘法后面有大用处，尤其是求(a的b次方 % m)的结果，也叫龟速乘
-	public static int multiply(int a, int b) {
-		int ans = 0;
-		while (b != 0) {
-			if ((b & 1) != 0) {
-				// 考察b当前最右的状态！
-				ans = add(ans, a);
-			}
-			a <<= 1;
-			b >>>= 1;
-		}
-		return ans;
 	}
 
 }

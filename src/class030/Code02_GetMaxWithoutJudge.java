@@ -43,8 +43,10 @@ public class Code02_GetMaxWithoutJudge {
 
 		// 判断A和B，符号是不是一样，如果一样sameAB=1，如果不一样sameAB=0
 		int sameAB = flip(diffAB);
+		
 		// diffAB 如果不一样，A为非负  或者 符号一样，c为非负
 		int returnA = diffAB * sa + sameAB * sc;
+
 		int returnB = flip(returnA);
 		return a * returnA + b * returnB;
 	}

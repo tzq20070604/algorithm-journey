@@ -18,7 +18,7 @@ public class Code04_DigitCount1 {
 		// left : 当前位左边的情况数
 		// right : 当前位右边的情况数
 		// 当前位的数字是cur
-		for (int right = 1, tmp = num, left, cur; tmp != 0; right *= 10, tmp /= 10) {
+		for (int right = 1, tmp = num, left, cur;  tmp != 0;  right *= 10, tmp /= 10) {
 			// 情况1：
 			// d != 0
 			// 1 ~ 30583 , d = 5
@@ -58,6 +58,7 @@ public class Code04_DigitCount1 {
 				left--;
 			}
 			ans += left * right;
+			
 			if (cur > d) {
 				ans += right;
 			} else if (cur == d) {

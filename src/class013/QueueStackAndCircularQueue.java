@@ -152,7 +152,7 @@ public class QueueStackAndCircularQueue {
 		}
 
 	}
-
+    // l和r 其中size和limit的妙用 这里r是指下一个要放入的位置，l是指左侧元素所在的位置
 	// 设计循环队列
 	// 测试链接 : https://leetcode.cn/problems/design-circular-queue/
 	class MyCircularQueue {

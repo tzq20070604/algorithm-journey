@@ -22,5 +22,6 @@ function printBinary(num){
   console.log(str.length)
 }
 printBinary(aaa)
+// printBinary(2.2)
 
-//console.log("整数: %d, 浮点数: %f, 字符串: %s, 对象: %o", 10, 3.14159265, "Hello", {a:1, b:2});
+console.log("整数: %d, 浮点数: %f, 字符串: %s, 对象: %o", 10, 3.14159265, "Hello", {a:1, b:2});

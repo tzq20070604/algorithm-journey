@@ -5,30 +5,38 @@
 const atLeast1 = function(jobs){
     // 显然希望耗费少的先执行，至少大的先执行，因此 （至少 - 耗费）大的先执行
     // 因为是至少电量，所以使用倒推法
+    // 1 是至少 0是耗费
     jobs.sort((a,b)=>{
         return (a[1] - a[0]) - (b[1] - b[0])
     })
-    let sum = 0
+    let left = 0
     for(let i = 0; i < jobs.length; i++){
         let item = jobs[i]
-        sum = Math.max(sum + item[0],item[1])
+        left = Math.max(left + item[0],item[1])
     }
-	return sum
+	return left
 }
 
-// 暴力方法 不同顺序 最后执行开始
+// 暴力方法 不同顺序 最后执行开始，最后剩下的电量为0
 const atLeast2 = function(jobs){
    return f(0,0,jobs)
 }
 
-function f(sum, index, jobs){
+/**
+ * 
+ * @param {number} left 执行[0，index-1]至少需要的电量
+ * @param {*} index 当前要执行的序号
+ * @param {*} jobs // 工作
+ * @return 返回
+ */
+function f(left, index, jobs){
     if (index == jobs.length - 1){
-       return  Math.max(sum + jobs[index][0], jobs[index][1])
+       return  Math.max(left + jobs[index][0], jobs[index][1])
     } else {
        let min = Infinity
        for(let j = index; j < jobs.length; j++){
            swap(index,j,jobs)
-           let power = Math.max(sum + jobs[index][0], jobs[index][1])
+           let power = Math.max(left + jobs[index][0], jobs[index][1])
            min = Math.min(f(power, index + 1, jobs),min)
            swap(index,j,jobs)
        }

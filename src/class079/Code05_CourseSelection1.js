@@ -16,7 +16,7 @@ readline.on('line',(line)=>{
        dp = Array(N+1).fill(0).map(()=>{
            return Array(N+1).fill(0).map(()=>{
               let buffer = new ArrayBuffer((M+2)*8)
-             return new Float64Array(buffer).fill(-1)
+              return new Float64Array(buffer).fill(-1)
            })
        })
        graph = Array(N+1).fill(0).map(()=>{

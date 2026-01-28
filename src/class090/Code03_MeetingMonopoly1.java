@@ -43,7 +43,7 @@ public class Code03_MeetingMonopoly1 {
 		meeting[j] = tmp;
 	}
 
-	// 正式方法
+	// 正式方法 贪心 就是先做完最先结束的课程
 	// 时间复杂度O(n*logn)
 	public static int maxMeeting2(int[][] meeting) {
 		// meeting[i][0] : i号会议开始时间

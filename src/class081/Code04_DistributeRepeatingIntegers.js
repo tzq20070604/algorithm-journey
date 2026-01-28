@@ -20,6 +20,8 @@ var canDistribute = function(nums, quantity) {
     let n = quantity.length
     let max = (1 << n)
     let order = Array(max).fill(0)
+    // 算出满足status订单需要的最少数字
+    
     // 方法1 每种情况都取出1，然后相加，有重复计算
     // for(let j = 1,sum = 0; j < max; j++){
     //     sum = 0

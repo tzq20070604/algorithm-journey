@@ -25,6 +25,7 @@ var minWindow = function(s, t) {
                 curDict[s[l]]--
                 l++
             }
+            // 之前满足过，现在不满足了，就扩大窗口，并计算最小值
             if (satify && !isSatify()){
                 l--
                 curDict[s[l]]++

@@ -1,6 +1,6 @@
 package class097;
 
-// 判断较小的数字是否是质数
+// 判断较小的数字是否是质数 1 不是质数 质数是指除了1以外，只能被自身整除的数
 // 时间复杂度O(根号n)
 public class Code01_SmallNumberIsPrime {
 

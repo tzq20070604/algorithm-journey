@@ -12,9 +12,6 @@ var robRecursion = function(root, isrob){
     }
     var ans = 0
     if (isrob){
-        if (root.isrob){
-            return root.isrob
-        }
         if (root.rob !== undefined){
             return root.rob
         }

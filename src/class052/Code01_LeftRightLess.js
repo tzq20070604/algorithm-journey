@@ -15,7 +15,7 @@ void async function () {
             continue
         } 
         var nums = tokens.map(Number)
-        getLowHighLowArr(nums)
+        getLowHighLowArr1(nums)
     }
 }()
 
@@ -70,4 +70,53 @@ function getLowHighLowArr(nums){
     var res = arr1.join('\n')
     console.log(res)
     return arr
+}
+
+/**
+ * 
+ * @param {[Number]} nums 
+ */
+function getLowHighLowArr1(nums){
+    let stack = new MonotonicStack(nums)
+    let arr = stack.getAnswer()
+    var arr1 = arr.map((item)=>{
+        return item[0] + " " + item[1]
+    })
+    var res = arr1.join('\n')
+    console.log(res)
+    return arr
+}
+
+// 单调栈 递增 找到离自己最近严格小于自己的数的位置
+class MonotonicStack{
+    arr = [[]]
+    constructor(nums){
+       let stack = []
+       let len = nums.length
+       this.arr = Array(len).fill(0).map(()=>{
+          return [-1,-1]
+       })
+       for(let i = 0; i < len; i++){
+           while(stack.length > 0 && nums[stack[stack.length - 1]] >= nums[i]){
+               let index = stack.pop()
+               this.arr[index][0] = (stack.length == 0 ? -1 : stack[stack.length - 1])
+               this.arr[index][1] = i
+           }
+           stack.push(i)
+       }
+       while(stack.length > 0){
+          let index = stack.pop()
+          this.arr[index][0] = (stack.length == 0 ? -1 : stack[stack.length - 1])
+          this.arr[index][1] = -1
+       }
+
+       for(let i = len - 1; i >= 0; i--){
+           if (this.arr[i][1] != -1 && (nums[i] == nums[this.arr[i][1]])){
+                this.arr[i][1] = this.arr[[this.arr[i][1]]][1]
+           }
+       }
+    }
+    getAnswer(){
+       return this.arr
+    }
 }

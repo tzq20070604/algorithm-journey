@@ -20,7 +20,7 @@ public class Code05_ReverseStackWithRecursive {
 		int ans = stack.pop();
 		// 条件1
 		if (stack.isEmpty()) {
-			// 这里没有加上stack.push(ans)，所以移除了栈顶元素
+			// 这里没有加上stack.push(ans)，所以移除了栈底元素
 			return ans;
 		} else {
 			// 拿到条件1，一直往上传

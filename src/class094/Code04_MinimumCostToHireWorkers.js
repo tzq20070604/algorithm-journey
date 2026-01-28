@@ -10,9 +10,9 @@ var mincostToHireWorkers = function(quality, wage, k) {
     for(let i = 0; i < quality.length; i++){
        arr.push([wage[i] / quality[i],quality[i]])
     }
-    // 按照性价比由大到小来排列
+    // 按照一份质量期望的最低支付的价格由小到大排列
     arr.sort((a,b)=>{return a[0]-b[0]})
-    // 质量从大到小排列
+    // 质量从小到大排列
     let heap = new CustomHeap(CustomHeap.HeapType.BIG, (a,b)=>{return a - b})
     let sum = 0,ans = Infinity
     // 按照i的比例支付时

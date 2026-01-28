@@ -12,6 +12,7 @@ var findCheapestPrice = function(n, flights, src, dst, k) {
    let next = Array(n).fill(Infinity)
    cur[src] = 0
    next[src] = 0
+   // 可以松弛k+1次
    for (let i =0; i <= k; i++){
        for (let [u,v,w] of flights){
           //原点到u的距离+w的距离 能否小于起始点到v的距离

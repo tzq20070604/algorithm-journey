@@ -7,7 +7,7 @@ public class Code01_PrefixSumArray {
 	class NumArray {
 
 		public int[] sum;
-
+        // sum[i] 表示前i项之和 0到i-1
 		public NumArray(int[] nums) {
 			sum = new int[nums.length + 1];
 			for (int i = 1; i <= nums.length; i++) {

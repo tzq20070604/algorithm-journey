@@ -102,7 +102,6 @@ function deleteWord(string) {
         var index = ch.charCodeAt() - "a".charCodeAt();
         var curVal = pathArr[cur][index];
         if (--passArr[curVal] == 0) {
-            passArr[curVal] = 0;
             pathArr[cur][index] = 0;
             return;
         }

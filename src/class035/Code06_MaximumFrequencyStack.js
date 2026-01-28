@@ -27,6 +27,7 @@ FreqStack.prototype.pop = function() {
     var arr = this.topTimeDict[this.topTimes]
     var ans = arr.pop()
     if (arr.length == 0){
+        // delete this.topTimeDict[this.topTimes]
         this.topTimeDict[this.topTimes] = undefined
         this.topTimes--
     }

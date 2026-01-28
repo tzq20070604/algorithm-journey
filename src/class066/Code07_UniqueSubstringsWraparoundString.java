@@ -16,7 +16,7 @@ public class Code07_UniqueSubstringsWraparoundString {
 		for (int i = 0; i < n; i++) {
 			s[i] = str.charAt(i) - 'a';
 		}
-		// dp[0] : s中必须以'a'的子串，最大延伸长度是多少，延伸一定要跟据base串的规则
+		// dp[0] : s中必须以'a'结尾的子串，最大延伸长度是多少，延伸一定要跟据base串的规则
 		int[] dp = new int[26];
 		// s : c d e....
 		//     2 3 4

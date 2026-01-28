@@ -14,7 +14,7 @@ public class Code03_TwoStonesBashGame {
 	public static String[][][] dp = new String[MAXN][MAXN][MAXN];
 
 	// 动态规划方法彻底尝试
-	// 为了验证
+	// 为了验证 m是最多拿几个
 	public static String win1(int a, int b, int m) {
 		if (m >= Math.max(a, b)) {
 			return a != b ? "先手" : "后手";

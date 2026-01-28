@@ -28,6 +28,8 @@ function pointSort(nums, l, r, value){
      if (nums[i] == value){
         i++
      } else if(nums[i] < value){
+      // l + minLength是一定<=value的
+      // 当此时的出现==情况下就是自己<value，出现了就是=value,所以i++
         swap(nums, i, l + minLength)
         minLength++
         i++

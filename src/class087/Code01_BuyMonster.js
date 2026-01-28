@@ -28,6 +28,7 @@ function compute(){
    console.log(ans)
 }
 
+// 从0号怪兽开始，当前的能力是0，通过所有怪兽，最少的钱数
 function f(index,p,dp){
    let ans = 0
    if (index == arr.length){

@@ -1,4 +1,4 @@
-package class019;
+// package class019;
 
 // 本文件课上没有讲，介绍一下Kattio类的使用
 // 某些题目的输入，使用StreamTokenizer就是无法正确读入

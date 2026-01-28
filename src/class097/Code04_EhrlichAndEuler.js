@@ -49,11 +49,12 @@ function euler(n){
             if (i * prime[j] > n){
                 break
             }
-            visit[i * prime[j]] = true
+           
             if (i % prime[j] == 0){
                 // 如果后续还是i去乘的话，就包含了prime[j]的因子，不是由最小的因子去设置的
                 break
             }
+            visit[i * prime[j]] = true
         }
     }
     return prime.length

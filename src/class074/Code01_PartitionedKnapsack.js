@@ -38,16 +38,16 @@ function f(arr,m){
         return Array(m + 1).fill(0)
     })
     for(let i = 1; i <= arr.length; i++){
-        let group = arr[i-1]
-        if (!group){
+        let curGroup = arr[i-1]
+        if (!curGroup){
             console.log(i)
-            group = []
+            curGroup = []
         }
         for(let j = 0; j <= m; j++){
             dp[i][j] = dp[i-1][j]
-            for(let k = 0; k < group.length; k++){
-               if(j >= group[k][0])
-               dp[i][j] = Math.max(dp[i][j], dp[i-1][j - group[k][0]] + group[k][1])
+            for(let index = 0; index < curGroup.length; index++){
+               if(j >= curGroup[index][0])
+               dp[i][j] = Math.max(dp[i][j], dp[i-1][j - curGroup[index][0]] + curGroup[index][1])
             }
         }
     }

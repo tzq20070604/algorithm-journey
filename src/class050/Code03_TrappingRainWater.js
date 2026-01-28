@@ -5,6 +5,7 @@
 var trap = function(height) {
     var index = 0
     var res = 0
+    // 找到右侧可以结算的地方 跟双指针有点像
     while(index < height.length){
     //    console.log(index)
        var max = -1

@@ -1,3 +1,4 @@
+// 测试链接 : https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
 /**
  * @param {number[]} nums
  * @param {number} limit
@@ -15,9 +16,9 @@ var longestSubarray = function(nums, limit) {
         }
         // 这里要结算
         ans = Math.max(ans, r - l)
-        if (r - l == 11){
-            //console.log(arr.slice(l,r))
-        }
+        // if (r - l == 11){
+        //     //console.log(arr.slice(l,r))
+        // }
         //console.log("l=",l,"r=", r)
         //console.log("\n")
         pop(l)

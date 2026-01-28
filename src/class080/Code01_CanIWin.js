@@ -17,7 +17,7 @@ var canIWin = function(maxChoosableInteger, desiredTotal) {
     return res
 };
 
-//在还有left的未达到的情况下，在status中有可挑选的中挑选,是否能稳赢
+//当前的先手，在还有left的未达到的情况下，在status中有可挑选的中挑选,是否能稳赢
 function f(n,status,left,dp){
     if(left <= 0){
         return false

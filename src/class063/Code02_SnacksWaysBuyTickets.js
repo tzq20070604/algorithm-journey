@@ -58,7 +58,8 @@ function selectOrNotSelect(start,end,sum,arr){
     if(start < end && sum <= m){ //有效
        selectOrNotSelect(start + 1, end, sum,arr)
     }
-    sum -= prices[start]
+    // 值引用不用这样做
+   //  sum -= prices[start]
 }
 
 function calulate(lArr, rArr){

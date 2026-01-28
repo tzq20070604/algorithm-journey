@@ -27,6 +27,7 @@ public class Code06_MakeSumDivisibleByP {
 		for (int i = 0, cur = 0, find; i < nums.length; i++) {
 			// 0...i这部分的余数
 			cur = (cur + nums[i]) % p;
+			
 			find = cur >= mod ? (cur - mod) : (cur + p - mod);
 			// find = (cur + p - mod) % p;
 			if (map.containsKey(find)) {

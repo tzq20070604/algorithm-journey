@@ -1,4 +1,7 @@
+// 测试链接 : https://leetcode.cn/problems/trapping-rain-water-ii/
 /**
+ * 经典的题目，水往低处流，每次都从最破弱处破局，如果跟最薄弱点相连的柱子水位最高就是薄弱点的水位和本身高度的最大值。
+ * 
  * @param {number[][]} heightMap
  * @return {number}
  */
@@ -22,6 +25,7 @@ var trapRainWater = function(heightMap) {
     let res = 0
     while(!heap.isEmpty()){
         let [x, y, h] = heap.pop()
+        // 省去visited
         if (heightMap[x][y] == -1){
             continue
         } else {

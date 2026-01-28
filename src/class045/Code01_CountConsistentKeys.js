@@ -7,13 +7,10 @@ var endArr = null;
 function buildTrieTree() {
     count = 1;
     pathArr = Array.from({ length: MaxLength }, () => {
-        return Array(26).fill(0);
+        return Array(12).fill(0);
     });
     passArr = new Array(MaxLength).fill(0);
     endArr = new Array(MaxLength).fill(0);
-    // //console.log(pathArr)
-    // //console.log(passArr)
-    // //console.log(endArr)
 }
 
 /**
@@ -30,7 +27,7 @@ function insertWord(string) {
     //console.log("\n", string)
     for (var i = 0; i < string.length; i++) {
         var ch = string[i];
-        var index = ch.charCodeAt(0) - "a".charCodeAt(0);
+        var index = path(ch)
 
         var curVal = pathArr[cur][index];
         //console.log("cur",cur)
@@ -56,11 +53,10 @@ function deleteWord(string) {
     passArr[cur]--;
     for (var i = 0; i < string.length; i++) {
         var ch = string[i];
-        var index = ch.charCodeAt() - "a".charCodeAt();
+        var index = path(ch)
         var curVal = pathArr[cur][index];
         if (--passArr[curVal] == 0) {
-            passArr[curVal] = 0;
-            pathArr[cur][index] = 0;
+            tree[cur][index] = 0;
             return;
         }
         cur = curVal;
@@ -80,7 +76,7 @@ function findWord(string) {
     var cur = 1;
     for (var i = 0; i < string.length; i++) {
         var ch = string[i];
-        var index = ch.charCodeAt() - "a".charCodeAt();
+        var index = path(ch)
         var curVal = pathArr[cur][index];
         if (curVal == 0) {
             return "NO";
@@ -97,7 +93,7 @@ function preCount(string) {
     var cur = 1;
     for (var i = 0; i < string.length; i++) {
         var ch = string[i];
-        var index = ch.charCodeAt() - "a".charCodeAt();
+        var index = path(ch)
         var curVal = pathArr[cur][index];
         if (curVal == 0) {
             return 0;
@@ -107,6 +103,15 @@ function preCount(string) {
     return passArr[cur];
 }
 
+function path(ch){
+   if (ch == '#'){
+      return 10
+   } else if(ch == '-'){
+      return 11
+   } else {
+      return ch.charCodeAt(0) - '0'.charCodeAt(0)
+   }
+}
 
 /**
  * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
@@ -117,10 +122,36 @@ function preCount(string) {
  * @return int整型一维数组
  */
 function countConsistentKeys( b ,  a ) {
-    // 对于每个a插入 
-    
+    // 将所有的a做成前缀树
+    buildTrieTree()
+    for(let i = 0; i < a.length; i++){
+       add(a[i])
+    }
+    let counts = []
+    for(let j = 0; j < b.length; j++){
+        find(b[j],counts)
+    }
+    console.log(counts)
+    return counts
 }
+
+function add(arr){
+    let string = ''
+    for(let i = 1; i < arr.length; i++){
+        string += '#'+(arr[i] - arr[i-1])
+    }
+    insertWord(string)
+}
+
+function find(arr,counts){
+    let string = ''
+    for(let i = 1; i < arr.length; i++){
+        string += '#'+(arr[i] - arr[i-1])
+    }
+    let ans = preCount(string)
+    counts.push(ans == "NO" ? 0 : ans)
+}
+
 module.exports = {
     countConsistentKeys : countConsistentKeys
 };
-

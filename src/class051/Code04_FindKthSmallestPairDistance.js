@@ -27,7 +27,7 @@ var smallestDistancePair = function(nums, k) {
 function distanceStatifyCount(distance, arr){
       var sum = 0
       for(var l = 0, r = 0; l < arr.length-1; l++){
-          while(r < arr.length && (arr[r + 1] - arr[l]) <= distance){
+          while(r + 1 < arr.length && (arr[r + 1] - arr[l]) <= distance){
              r++
           }
           sum += (r - l)

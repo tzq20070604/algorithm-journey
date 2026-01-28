@@ -11,7 +11,8 @@ const pickNumbersClosedSum = function(n, k){
    let sum = ((n * (n+1)) >> 1)
    let aim = (sum >> 1)
    let ans = f(n,k,aim)
-   if (ans.length == 0){
+   // (aim & 1) == 1 累加和为奇数，才有可能是奇数+偶数
+   if (ans.length == 0 && (aim & 1) == 1){
       ans = f(n,k,aim + 1)
    }
    return ans
@@ -25,8 +26,9 @@ function f(n,k,aim){
         return []
     }
     let range = n - k
+    // 至少提升几轮 4.3轮，就是说有4个被从最小移到最大，另外一个没有移到，其余不变
     let d = (aim - min) % range
-    let count = (aim - min - d) / range
+    let count = Math.floor((aim - min - d) / range)
     let left = aim - min - count * range
     console.log(aim,range,d,count,left)
     let ans = []

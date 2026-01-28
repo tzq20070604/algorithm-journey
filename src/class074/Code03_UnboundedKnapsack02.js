@@ -31,11 +31,11 @@ function f(arr){
         let buffer1 = new ArrayBuffer((Math.ceil(t / sub) + 1) * 8);
         let dp = new Float64Array(buffer1);
         for(let i = 2; i <= arr.length;i++){
-            let [v,w] = arr[i-1]
-            v = v / sub
+            let [itemT,itemW] = arr[i-1]
+            itemT = itemT / sub
             for(let time=1; time <= t; time++){
-                if (time >= v){
-                    dp[time] = Math.max(dp[time],dp[time-v] + w)
+                if (time >= itemT){
+                    dp[time] = Math.max(dp[time],dp[time-itemT] + itemW)
                 } 
             }
         }

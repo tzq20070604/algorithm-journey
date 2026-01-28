@@ -47,6 +47,7 @@ var alienOrder = function(words) {
             }
         }
     }
+    // 说明有环
     if (path.length != set.size){
          return ""
     } else {

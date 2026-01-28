@@ -25,7 +25,7 @@ public class Code01_GcdAndLcm {
 	}
 
 	public static long lcm(long a, long b) {
-		return (long) a / gcd(a, b) * b;
+		return (long) a  * b / gcd(a, b);
 	}
 
 }

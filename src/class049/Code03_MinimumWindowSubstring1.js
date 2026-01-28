@@ -6,12 +6,14 @@
 var minWindow = function(s, t) {
     setup()
     for(var i = 0; i < t.length; i++){
+      // sDict 欠债的字符和个数
       if (sDict[t[i]] === undefined){
          sDict[t[i]] = -1
       } else {
          sDict[t[i]]--
       }
-      // 多少个债务
+
+      // 所有的欠债数量
       debt--
     }
    
@@ -22,6 +24,7 @@ var minWindow = function(s, t) {
             if (++sDict[ch] <= 0){
                debt++
             }
+            // 债务还清了 符合条件
             while(debt == 0){
                if (sDict[s[l]] === undefined){
                   l++

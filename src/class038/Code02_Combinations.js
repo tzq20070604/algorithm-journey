@@ -30,7 +30,7 @@ var subsetRecursion = function(path, i){
    }
    // 相同的数[i, j] 
    for (var k = 0; k <= j - i + 1; k++){
-     //console.log.log(`i = ${i}, j = ${j}, k=${k}, num[i] =${numArr[i]}`)
+     //console.log(`i = ${i}, j = ${j}, k=${k}, num[i] =${numArr[i]}`)
      // 选择0到j - i + 1个arr[i]
      var items = Array(k).fill(numArr[i])
      var path1 = path.concat(items)

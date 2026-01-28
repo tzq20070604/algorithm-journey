@@ -1,4 +1,6 @@
 /**
+ * 测试链接 : https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+ 单源最短路径
  * @param {number} n
  * @param {number[][]} flights
  * @param {number} src
@@ -13,6 +15,7 @@ var findCheapestPrice = function(n, flights, src, dst, k) {
        let [u,v,s] = flights[i]
        graph[u].push([v,s])
    }
+   //中转k次 就是可以走k+1次 [0,k+1]
    let distance = Array(n).fill(0).map((item)=>{
        return Array(k+2).fill(Infinity)
    })
@@ -21,7 +24,7 @@ var findCheapestPrice = function(n, flights, src, dst, k) {
        return Array(k+2).fill(false)
    })
 
-   let heap = new Heap(Heap.HeapType.SMALL,(item1,item2)=>{
+   let heap = new CustomHeap(CustomHeap.HeapType.SMALL,(item1,item2)=>{
       return item1[2] - item2[2]
    })
    distance[src][k+1] = 0
@@ -49,31 +52,31 @@ var findCheapestPrice = function(n, flights, src, dst, k) {
    return -1
 };
 
-class Heap {
+class CustomHeap {
     static HeapType = {
         SMALL:'small',
         BIG:'big'
     }
-    type = Heap.HeapType.SMALL
+    type = CustomHeap.HeapType.SMALL
     items = []
     size = 0
     sortFunc = function(item1, item2){ return item1 - item2}
 
     constructor(type, sortFunc){
        if (type == undefined) {
-         this.type = Heap.HeapType.SMALL
+         this.type = CustomHeap.HeapType.SMALL
        }
        if (sortFunc == undefined){
            sortFunc = this.sortFunc
        }
-       if (type == Heap.HeapType.BIG){
+       if (type == CustomHeap.HeapType.BIG){
            this.sortFunc = function(item1, item2){
                return 0 - sortFunc(item1, item2)
            }
        } else {
            this.sortFunc = sortFunc
        }
-       this.type == Heap.HeapType.SMALL
+       this.type == CustomHeap.HeapType.SMALL
     }
 
     insert(item){

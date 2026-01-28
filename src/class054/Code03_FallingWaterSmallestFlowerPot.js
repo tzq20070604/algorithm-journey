@@ -1,3 +1,4 @@
+// 测试链接 : https://www.luogu.com.cn/problem/P2698
 var readline = require('readline')
 var reader = readline.createInterface({input:process.stdin})
 

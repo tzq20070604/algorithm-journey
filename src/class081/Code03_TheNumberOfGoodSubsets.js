@@ -17,6 +17,7 @@ var numberOfGoodSubsets = function(nums) {
         return Array(MaxValue + 1).fill(-1)
     })
     for(let s = 1; s < max; s++){
+        // 凑成s状态，所选的数字小于MaxValue的好子集个数
         ans += f(s,MaxValue,cnt,dp)
         ans = (ans % MOD)
     }
@@ -29,7 +30,8 @@ function f(s,n,cnt,dp){
     if (n == 1){ 
        if (s == 0){
           let res = 1;
-		  for (let j = 0; j < cnt[n]; j++) {
+          // 这个主要是为了计算含1的次方
+		  for (let j = 0; j < cnt[1]; j++) {
 			 res = (res << 1) % MOD;
 		  }
           return res
@@ -47,7 +49,7 @@ function f(s,n,cnt,dp){
     if(cur != 0 && cnt[n] != 0 && ((s & cur) == cur)){
         ans += (cnt[n] * f(s^cur,n-1,cnt,dp)) % MOD
         ans = ans % MOD
-    }
+    } 
     dp[s][n] = ans
     return ans
 }

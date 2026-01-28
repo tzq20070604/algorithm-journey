@@ -1,4 +1,6 @@
 //Definition for a binary tree node.
+
+let lampCount = 0
 // lamp 拼写不一致导致错误，要注意
 function TreeNode(val, left, right) {
     this.val = (val===undefined ? 0 : val)
@@ -19,7 +21,6 @@ var minCameraCover = function(root) {
     return lampCount
 };
 
-let lampCount = 0
 function f(node){
     if (!node){
         return {

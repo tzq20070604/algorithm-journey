@@ -40,7 +40,9 @@ public class Code02_MaxSumDividedBy7 {
 			x = nums[i - 1];
 			cur = nums[i - 1] % 7;
 			for (int j = 0; j < 7; j++) {
+				// 不选择
 				dp[i][j] = dp[i - 1][j];
+				// 选择
 				// 这里求need是核心
 				need = cur <= j ? (j - cur) : (j - cur + 7);
 				// 或者如下这种写法也对

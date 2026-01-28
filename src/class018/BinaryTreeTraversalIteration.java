@@ -41,10 +41,10 @@ public class BinaryTreeTraversalIteration {
 		if (head != null) {
 			Stack<TreeNode> stack = new Stack<>();
 			while (!stack.isEmpty() || head != null) {
-				if (head != null) {
+				if (head != null) { // 往下扎
 					stack.push(head);
 					head = head.left;
-				} else {
+				} else { // 到头了
 					head = stack.pop();
 					System.out.print(head.val + " ");
 					head = head.right;
@@ -88,6 +88,7 @@ public class BinaryTreeTraversalIteration {
 			// 一旦打印过节点，h就变成打印节点
 			// 之后h的含义 : 上一次打印的节点
 			while (!stack.isEmpty()) {
+				// 无敌peek
 				TreeNode cur = stack.peek();
 				if (cur.left != null && h != cur.left && h != cur.right) {
 					// 有左树且左树没处理过

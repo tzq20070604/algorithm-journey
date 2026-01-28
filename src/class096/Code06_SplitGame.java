@@ -26,7 +26,9 @@ import java.io.StreamTokenizer;
 import java.util.Arrays;
 
 public class Code06_SplitGame {
-
+    
+	//每个状态的sg值，等于它之前各种状态的sg值中，第一个未出现的最小自然数(包括0)
+	// 每个状态的sg
 	// 20 -> 0
 	// 左    右
 	public static int MAXN = 21;
@@ -34,7 +36,8 @@ public class Code06_SplitGame {
 	public static int[] nums = new int[MAXN];
 
 	public static int[] sg = new int[MAXN];
-
+    
+	// 最多101种状态
 	public static int MAXV = 101;
 
 	public static boolean[] appear = new boolean[MAXV];

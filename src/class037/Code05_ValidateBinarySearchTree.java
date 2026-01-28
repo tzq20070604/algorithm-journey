@@ -18,7 +18,7 @@ public class Code05_ValidateBinarySearchTree {
 
 	public static int r;
 
-	// 提交时改名为isValidBST
+	// 提交时改名为isValidBST 中序遍历
 	public static boolean isValidBST1(TreeNode head) {
 		if (head == null) {
 			return true;

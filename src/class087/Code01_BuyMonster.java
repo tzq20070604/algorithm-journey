@@ -53,7 +53,7 @@ public class Code01_BuyMonster {
 		for (int money : b) {
 			m += money;
 		}
-		// dp[i][j] : 花的钱不能超过j，通过前i个怪兽，最大能力是多少
+		// dp[i][j] : 花的钱不能超过j，通过前i个怪兽后最大能力是多少
 		// 如果dp[i][j] == Integer.MIN_VALUE
 		// 表示花的钱不能超过j，无论如何都无法通过前i个怪兽
 		int[][] dp = new int[n + 1][m + 1];

@@ -17,7 +17,7 @@ var makesquare = function(matchsticks) {
       return false
    }
    let status = (1 << n) - 1
-   let dp = Array(1 << n).fill(0)
+   let dp = Array(1 << n).fill(-1)
    return f(n,matchsticks,status,0,sum / 4,dp, sum / 4)
 };
 
@@ -25,7 +25,7 @@ function f(n,matchsticks,status,ei,left,dp,edgeLength){
     if (ei == 4){
         return true
     }
-    if (dp[status] != 0){
+    if (dp[status] != -1){
         return dp[status] == 1
     }
     if (left == 0){

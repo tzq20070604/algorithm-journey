@@ -38,7 +38,8 @@ public class Code05_MaximumRunningTimeOfNComputers {
 
 	// 让num台电脑共同运行time分钟，能不能做到
 	public static boolean f1(int[] arr, int num, long time) {
-		// 碎片电量总和
+		// 碎片电量总和，因为是time分钟，那个电池供电都是要这么长时间的
+		// 选择一个最大的没有问题
 		long sum = 0;
 		for (int x : arr) {
 			if (x > time) {

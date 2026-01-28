@@ -34,7 +34,7 @@ var minimumScore = function(nums, edges) {
             if (pos < pre + size[pre]){ // 是子树
                 sum1 = orSum[1] ^ orSum[pre]
                 sum2 = orSum[pre] ^ orSum[pos]
-                sum3 = orSum[1] ^ sum1 ^ sum2
+                sum3 = orSum[pos]
             } else { // 不是子树
                 sum2 = orSum[pre]
                 sum3 = orSum[pos]

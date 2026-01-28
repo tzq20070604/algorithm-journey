@@ -1,4 +1,4 @@
-package class051;
+// package class051;
 
 // 刀砍毒杀怪兽问题
 // 怪兽的初始血量是一个整数hp，给出每一回合刀砍和毒杀的数值cuts和poisons
@@ -32,25 +32,27 @@ public class Code07_CutOrPoison {
 	}
 
 	// 不做要求
-	public static int f1(int[] cuts, int[] poisons, int i, int r, int p, int[][][] dp) {
-		r -= p;
-		if (r <= 0) {
+	public static int f1(int[] cuts, int[] poisons, int i, int hp, int p, int[][][] dp) {
+		// 药的总量
+		hp -= p;
+		if (hp <= 0) {
 			return i + 1;
 		}
 		if (i == cuts.length) {
 			if (p == 0) {
 				return Integer.MAX_VALUE;
 			} else {
-				return cuts.length + 1 + (r + p - 1) / p;
+				return cuts.length + 1 + (hp + p - 1) / p;
 			}
 		}
-		if (dp[i][r][p] != 0) {
-			return dp[i][r][p];
+		if (dp[i][hp][p] != 0) {
+			return dp[i][hp][p];
 		}
-		int p1 = r <= cuts[i] ? (i + 1) : f1(cuts, poisons, i + 1, r - cuts[i], p, dp);
-		int p2 = f1(cuts, poisons, i + 1, r, p + poisons[i], dp);
+		// 使用刀砍和不使用刀砍，
+		int p1 = hp <= cuts[i] ? (i + 1) : f1(cuts, poisons, i + 1, hp - cuts[i], p, dp);
+		int p2 = f1(cuts, poisons, i + 1, hp, p + poisons[i], dp);
 		int ans = Math.min(p1, p2);
-		dp[i][r][p] = ans;
+		dp[i][hp][p] = ans;
 		return ans;
 	}
 
@@ -78,6 +80,7 @@ public class Code07_CutOrPoison {
 	public static boolean f(int[] cuts, int[] posions, long hp, int limit) {
 		int n = Math.min(cuts.length, limit);
 		for (int i = 0, j = 1; i < n; i++, j++) {
+			// limit回合的毒还在起作用
 			hp -= Math.max((long) cuts[i], (long) (limit - j) * (long) posions[i]);
 			if (hp <= 0) {
 				return true;

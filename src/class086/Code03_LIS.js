@@ -34,6 +34,7 @@ function compute(n,nums){
     }
     let len = ends.length
     let ans = Array(len).fill(Infinity)
+    //将dp[i]
     for(let i = 0; i < nums.length; i++){
         if (dp[i] == len){
              ans[0] = nums[i]
@@ -44,6 +45,7 @@ function compute(n,nums){
             if(ans[len - dp[i] - 1] < nums[i]){
                 ans[len - dp[i]] = nums[i]
             }
+            
         }
     }
     return ans

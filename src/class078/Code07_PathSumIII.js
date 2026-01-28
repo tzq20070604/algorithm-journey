@@ -4,6 +4,8 @@ function TreeNode(val, left, right) {
     this.left = (left===undefined ? null : left)
     this.right = (right===undefined ? null : right)
 }
+//全局变量
+let pathCnt = 0
 
 /**
  * @param {TreeNode} root
@@ -19,7 +21,7 @@ var pathSum = function(root, targetSum) {
      return pathCnt
     
 };
-let pathCnt = 0
+
 function f(root,preSum,record,targetSum){
     //判断以root节点作为结尾，有几条路径
     if (root){

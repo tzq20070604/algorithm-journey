@@ -56,5 +56,4 @@ public class Code02_ReverseNodesInkGroup {
 		}
 		s.next = e;
 	}
-
 }

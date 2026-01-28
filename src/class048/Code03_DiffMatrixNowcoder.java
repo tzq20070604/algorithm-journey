@@ -31,6 +31,7 @@ public class Code03_DiffMatrixNowcoder {
 	}
 
 	public static void build() {
+		// 请注意这里这里<=
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= m; j++) {
 				diff[i][j] += diff[i - 1][j] + diff[i][j - 1] - diff[i - 1][j - 1];
@@ -76,6 +77,7 @@ public class Code03_DiffMatrixNowcoder {
 				add(a, b, c, d, k);
 			}
 			build();
+			// 截掉首行和首列的0
 			for (int i = 1; i <= n; i++) {
 				out.print(diff[i][1]);
 				for (int j = 2; j <= m; j++) {

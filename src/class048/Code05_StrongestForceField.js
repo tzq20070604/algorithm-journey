@@ -19,8 +19,6 @@ var fieldOfGreatestBlessing = function(forceField) {
       if (!xArr.includes(2* item[0] + item[2])){
          xArr.push(2* item[0] + item[2])
       }
-   })
-   forceField.map((item)=>{
       if (!yArr.includes(2* item[1] - item[2])){
          yArr.push(2* item[1] - item[2])
       } 
@@ -38,6 +36,7 @@ var fieldOfGreatestBlessing = function(forceField) {
       var b = 2* item[0] + item[2]
       var c = 2* item[1] - item[2]
       var d = 2* item[1] + item[2]
+      // 加1 
       var a1 = xArr.indexOf(a) + 1
       var b1 = xArr.indexOf(b) + 1
       var c1 = yArr.indexOf(c) + 1

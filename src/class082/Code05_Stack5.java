@@ -11,12 +11,14 @@ package class082;
 public class Code05_Stack5 {
 
 	public static int maxProfit(int[] prices, int fee) {
-		// prepare : 交易次数无限制情况下，获得收益的同时扣掉了一次购买和手续费之后，最好的情况
+		// prepare : 交易次数无限制情况下，获得收益的同时扣掉了一次购买和手续费之后，最大值
 		int prepare = -prices[0] - fee;
 		// done : 交易次数无限制情况下，能获得的最大收益
 		int done = 0;
 		for (int i = 1; i < prices.length; i++) {
+			// 当前没有动作和当前卖掉获得的最大收益
 			done = Math.max(done, prepare + prices[i]);
+			// 当前没有操作和当前买入获得的最大收益
 			prepare = Math.max(prepare, done - prices[i] - fee);
 		}
 		return done;

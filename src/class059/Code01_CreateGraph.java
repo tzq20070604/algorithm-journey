@@ -54,10 +54,16 @@ public class Code01_CreateGraph {
 	// 链式前向星加边
 	public static void addEdge(int u, int v, int w) {
 		// u -> v , 边权重是w
+		//将上一次以u作为起点的边号作为本次边号的下一条边
 		next[cnt] = head[u];
+		// 设置当前边的头边号为cnt，
+		head[u] = cnt;
+		// 设置当前边的终点
 		to[cnt] = v;
+		// 设置当前边的权重
 		weight[cnt] = w;
-		head[u] = cnt++;
+		// 边号加1
+		cnt++;
 	}
 
 	// 三种方式建立有向图带权图

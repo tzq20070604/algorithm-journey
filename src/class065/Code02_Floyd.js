@@ -1,3 +1,5 @@
+// 测试链接 : https://www.luogu.com.cn/problem/P2910
+// 任意2点之间的最短距离
 const fs = require('fs')
 const path1 = require('path')
 const fileName = 'Code02_Floyd.in'
@@ -32,6 +34,7 @@ function calcaluteShortPath(){
     // console.log(graph)
     // console.log(path)
     distance = graph
+    // 跳点优先
     for (let m = 1; m <= n; m++){
         for (let i = 1; i <= n; i++){
             for (let j = 1; j <= n; j++){

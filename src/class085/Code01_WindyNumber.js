@@ -28,7 +28,7 @@ function f(num){
 /**
  * 
  * @param {number} cur 当前是第几位
- * @param {number} pre 前一位选择的数字是多少
+ * @param {number} pre 前一位选择的数字是多少 前一位的数字是pre，如果pre == 10，表示从来没有选择过数字
  * @param {number} freeSel 当前是否能够自由选择 1 可以 0 不可以
  * @param {[number]} nums 这个是每一位数组
  */

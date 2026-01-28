@@ -49,6 +49,7 @@ public class Code04_StampingTheGrid {
 				// 原始矩阵里：grid[i][j] == 0，说明是个洞
 				// 差分矩阵里：diff[i + 1][j + 1] == 0，说明洞上并没有邮票
 				// 此时返回false
+				// 注意查分对应的是[i+1,j+1] 因为加了首列0和首行0
 				if (grid[i][j] == 0 && diff[i + 1][j + 1] == 0) {
 					return false;
 				}

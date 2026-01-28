@@ -5,6 +5,7 @@ var minimumObstacles = function(grid) {
         return Array(n).fill(Infinity)
     })
     let directs = [[0,-1],[0,1],[-1,0],[1,0]]
+    // 其实双端队列 在js里面可以使用数组就行 长度就使用length
     const queue = new CircularDeque(40001)
     queue.push([0,0])
     distance[0][0] = 0

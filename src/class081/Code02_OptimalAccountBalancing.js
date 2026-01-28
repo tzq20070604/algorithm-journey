@@ -12,7 +12,7 @@ var minTransfers = function(transactions){
    let res = transactions.length - f(0,0,satify,transactions,dp)
    return res
 }
-
+// 累加和为sum的数组，还有status没有拆分，能够凑成和为0的集合最大数量
 function f(status,sum,satify,transactions,dp){
    if (status == satify){
       return 0

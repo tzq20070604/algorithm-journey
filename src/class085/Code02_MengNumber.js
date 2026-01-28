@@ -119,7 +119,6 @@ function check(numStr){
 }
 
 // 如果不依赖 BigInt和第三方库，可以利用模运算的数学性质，通过处理大数字符串的每一位来计算结果
-// (a * b) % M = ((a % M) * (b % M)) % M
 // 。其基本原理是：对于大数 N（表示为字符串）和模数 m，有公式 (a * b) mod m = [(a mod m) * (b mod m)] mod m和 (a + b) mod m = [(a mod m) + (b mod m)] mod m
 // 。将大数视为十进制数，从高位到低位逐位处理，将当前结果乘以10再加上当前位的数字，然后立即对模数取余，从而始终在一个安全整数范围内进行运算
 // 。
@@ -127,8 +126,28 @@ function stringMod(dividendStr, divisor) {
     let remainder = 0;
     for (let i = 0; i < dividendStr.length; i++) {
         // 将当前余数乘以10，加上当前位的数字
-        let cur = parseInt(dividendStr[i], 10)
-        remainder = (remainder * 10 + cur) % divisor;
+        let currentDigit = parseInt(dividendStr[i], 10);
+        remainder = (remainder * 10 + currentDigit) % divisor;
     }
     return remainder;
 }
+
+// 其实就是求10**n对MOD取余
+function getDpMod(n,MOD){
+  let dp = Array(n + 1).fill(0)
+  function f(n, MOD){
+      if (n == 0){
+         dp[0] = 1
+         return 1
+      } else {
+         dp[n] = ((10 % MOD) * f(n-1, MOD)) % MOD
+         return dp[n]
+      }
+  }
+  f(n, MOD)
+  return dp
+}
+
+let res = getDpMod(5,7)
+console.log(res)
+

@@ -1,3 +1,4 @@
+// 每次让后手面对异或值都等于0的状态，异或值为0是必输态
 const rl = require('readline').createInterface({input:process.stdin})
 let lineNum = 0
 rl.on('line',(line)=>{

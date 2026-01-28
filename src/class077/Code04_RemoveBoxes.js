@@ -26,8 +26,8 @@ function f(l,r,prefix,boxes,dp){
     if (dp[l][r][prefix] != -1){
         return dp[l][r][prefix]
     }
-    let m = l
-    for(; m<=r && boxes[m] == boxes[l]; m++){}
+    
+    for(let m = l; m<=r && boxes[m] == boxes[l]; m++){}
     // [l,m-1] [m,r]
     let count = m - l + prefix
     let res = f(m,r,0,boxes,dp) + count * count

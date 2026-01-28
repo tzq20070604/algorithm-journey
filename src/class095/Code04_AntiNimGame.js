@@ -1,3 +1,7 @@
+// 让先手最先撞上最先能赢的状态，谁赢
+// 最先能赢的状态 所以肯定是先手遇到若干堆全是1，有一堆>0的状态,该状态的异或值不为0
+// 最能赢的状态就是先遇到异或值不为0，先手肯定可以找到一个最大值的然后将结果转换为0，使得后手每次遇到的结果是异或为0的
+// 而后手转给先手的状态只能是异或结果非0的，
 const rl = require('readline').createInterface({input:process.stdin})
 let lineNum = 0
 rl.on('line',(line)=>{
@@ -15,7 +19,6 @@ rl.on('line',(line)=>{
       } else {
          ans = (ans != 0 ? "John":'Brother')
       }
-      console.log(ans)
       return ans
    } 
 })

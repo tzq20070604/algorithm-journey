@@ -1,3 +1,5 @@
+// 测试链接 : https://www.luogu.com.cn/problem/P5788
+// 这个只求右侧，不用修正，但是如果求左侧，则要修正
 const rl = require('readline').createInterface({input:process.stdin})
 var lineNo = 0
 var nums = []

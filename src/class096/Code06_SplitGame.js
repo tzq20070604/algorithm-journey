@@ -27,6 +27,7 @@ function build(){
        for(let k = j-1; k >= 0; k--){
           for(let m = j-1; m >=0; m--){
             //相当于k,m
+            // 这里本来是sg(k,m),但是因为是独立的，sg(k,m) = sg[k] ^ sg[m] 
             appear[sg[k] ^ sg[m]] = true
           }
        }
@@ -61,7 +62,7 @@ function compute(arr){
         for(let k = j - 1; k >= 0; k--){
             for(let m = k; m >= 0; m--){
                 let res = (ans ^ sg[j] ^ sg[k] ^ sg[m])
-                if (res == 0){
+                if (res == 0){ // 后者输的局面
                     count++
                     if (a == -1){
                         a = j

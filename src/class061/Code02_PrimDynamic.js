@@ -37,6 +37,7 @@ function shortPath(){
         graph[p1].push([p2, s])
         graph[p2].push([p1, s])
     }
+    // 思路 从一个节点出发，所有的节点(离这些被选择的节点)，谁近选择谁，选过的(从堆里弹出的)忽略
     //2.将一个顶点弹出，出堆的时候进行结算。如果这个顶点相连的点没有被访问，将这个点相连的边放入小根堆，将这个点设置为已经访问,
     let heap = new Heap(Heap.HeapType.SMALL, (item1, item2)=>{return item1[1] - item2[1]})
     for(let j = 0; j < graph[1].length; j++){

@@ -1,4 +1,4 @@
-package class002;
+// package class002;
 
 import java.util.Arrays;
 
@@ -20,7 +20,7 @@ public class Experiment {
 		System.out.println("社会可能会因此陷入危机，比如大量的犯罪或者经历社会动荡");
 		System.out.println("测试开始");
 		int n = 100;
-		int t = 1000000;
+		int t = 10000000;
 		System.out.println("人数 : " + n);
 		System.out.println("轮数 : " + t);
 		experiment(n, t);

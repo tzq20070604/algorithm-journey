@@ -19,6 +19,7 @@ rl.on('line',(line)=>{
 // 黄金分割点
 let rate = BigInt('161803398874989484')
 function compute(max,min){
+    // 差值成完以后取整，但是rate是小数，没办法转为BigInt
      let ans = BigInt(min) - BigInt(max - min) * rate / BigInt(1e17)
      return ans == 0 ? 0 : 1
 }
