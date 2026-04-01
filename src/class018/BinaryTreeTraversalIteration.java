@@ -145,7 +145,7 @@ public class BinaryTreeTraversalIteration {
 		return ans;
 	}
 
-	// 用一个栈完成中序遍历
+	// 用一个栈完成中序遍历[左 中 右]
 	// 测试链接 : https://leetcode.cn/problems/binary-tree-inorder-traversal/
 	public static List<Integer> inorderTraversal(TreeNode head) {
 		List<Integer> ans = new ArrayList<>();

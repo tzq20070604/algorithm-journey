@@ -24,3 +24,4 @@ if (!fs.existsSync(filePath)) {
 } else {
     console.log('文件存在')
 }
+

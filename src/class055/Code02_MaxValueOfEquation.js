@@ -8,6 +8,7 @@ var findMaxValueOfEquation = function(points, k) {
     max = Number.NEGATIVE_INFINITY
     ql = 0
     qr = 0
+    // [l,r) r是即将加入的数字 
     for (var l = 0, r = 0; r < points.length; r++){
         let [x, y] = points[r]
         // 判断points[r]是否可以进队列
