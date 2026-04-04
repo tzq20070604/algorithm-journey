@@ -1,7 +1,5 @@
 const RED = true;
 const BLACK = false;
-
-// 节点类：唯一idKey + 自定义value
 class Node {
   constructor(idKey, value) {
     this.idKey = idKey;
@@ -13,161 +11,163 @@ class Node {
   }
 }
 
-// 对外方法置顶：初始化、插入、排序、查找、删除
 class RedBlackTree {
-  // 【1.初始化】传入自定义排序函数(同Array.sort规则)
+  // 1. 初始化
   constructor(compareFn) {
     if (typeof compareFn !== "function") {
-      throw new Error("必须传入value排序函数：(a,b)=> -1|0|1");
+      throw new Error("必须传入排序函数");
     }
     this.compare = compareFn;
-    // 哨兵空节点
+
     this.NIL = new Node(null, null);
     this.NIL.color = BLACK;
+    this.NIL.left = this.NIL;
+    this.NIL.right = this.NIL;
+    this.NIL.parent = this.NIL;
+
     this.root = this.NIL;
   }
 
-  // 【2.插入】按唯一idKey插入，重复拦截
+  // 2. 插入
   insert(idKey, value) {
     if (this._findNodeById(idKey)) {
-      console.warn(`id已存在：${idKey}，跳过插入`);
+      console.warn("id 已存在：" + idKey);
       return;
     }
 
-    const newNode = new Node(idKey, value);
-    newNode.left = this.NIL;
-    newNode.right = this.NIL;
+    const z = new Node(idKey, value);
+    z.left = this.NIL;
+    z.right = this.NIL;
+    z.parent = this.NIL;
 
-    let parent = null;
-    let current = this.root;
-    // 按自定义value比较找插入位置
-    while (current !== this.NIL) {
-      parent = current;
-      if (this.compare(newNode.value, current.value) < 0) {
-        current = current.left;
+    let p = this.NIL;
+    let cur = this.root;
+
+    while (cur !== this.NIL) {
+      p = cur;
+      if (this.compare(z.value, cur.value) < 0) {
+        cur = cur.left;
       } else {
-        current = current.right;
+        cur = cur.right;
       }
     }
 
-    newNode.parent = parent;
-    if (!parent) {
-      this.root = newNode;
-    } else if (this.compare(newNode.value, parent.value) < 0) {
-      parent.left = newNode;
+    z.parent = p;
+    if (p === this.NIL) {
+      this.root = z;
+    } else if (this.compare(z.value, p.value) < 0) {
+      p.left = z;
     } else {
-      parent.right = newNode;
+      p.right = z;
     }
 
-    // 根节点强制黑
-    if (!newNode.parent) {
-      newNode.color = BLACK;
+    if (z.parent === this.NIL) {
+      z.color = BLACK;
       return;
     }
-    // 无祖父节点无需修复
-    if (!newNode.parent.parent) return;
 
-    this._insertFix(newNode);
+    if (z.parent.parent === this.NIL) return;
+    this._insertFix(z);
   }
 
-  // 【3.获取有序列表】中序遍历，按初始化排序规则输出
+  // 3. 获取有序列表
   getSortedList() {
-    const result = [];
+    const res = [];
     const dfs = (node) => {
-      if (node !== this.NIL) {
-        dfs(node.left);
-        result.push({
-          idKey: node.idKey,
-          value: node.value,
-          color: node.color ? "红" : "黑"
-        });
-        dfs(node.right);
-      }
+      if (node === this.NIL) return;
+      dfs(node.left);
+      res.push({
+        idKey: node.idKey,
+        value: node.value,
+        color: node.color ? "红" : "黑",
+      });
+      dfs(node.right);
     };
     dfs(this.root);
-    return result;
+    return res;
   }
 
-  // 【4.精准查找】按唯一idKey查value
+  // 4. 按 ID 查找
   findById(idKey) {
-    const target = this._findNodeById(idKey);
-    return target ? target.value : null;
+    const n = this._findNodeById(idKey);
+    return n ? n.value : null;
   }
 
-  // 【5.删除】按唯一idKey删除，自动修复红黑平衡
+  // 5. 按 ID 删除
   deleteById(idKey) {
-    const delNode = this._findNodeById(idKey);
-    if (!delNode) return false;
+    const z = this._findNodeById(idKey);
+    if (!z || z === this.NIL) return false;
 
-    let replaceNode;
-    let originColor = delNode.color;
-    let tempNode = delNode;
+    let y = z;
+    let yOriginColor = y.color;
+    let x;
 
-    // 左右缺其一，直接顶替
-    if (delNode.left === this.NIL) {
-      replaceNode = delNode.right;
-      this._transplant(delNode, delNode.right);
-    } else if (delNode.right === this.NIL) {
-      replaceNode = delNode.left;
-      this._transplant(delNode, delNode.left);
+    if (z.left === this.NIL) {
+      x = z.right;
+      this._transplant(z, z.right);
+    } else if (z.right === this.NIL) {
+      x = z.left;
+      this._transplant(z, z.left);
     } else {
-      // 找后继顶替
-      tempNode = this._getMinNode(delNode.right);
-      originColor = tempNode.color;
-      replaceNode = tempNode.right;
-      this._transplant(tempNode, tempNode.right);
-      this._transplant(delNode, tempNode);
-      tempNode.left = delNode.left;
-      tempNode.left.parent = tempNode;
-      tempNode.right = delNode.right;
-      tempNode.right.parent = tempNode;
-      tempNode.color = delNode.color;
+      y = this._minNode(z.right);
+      yOriginColor = y.color;
+      x = y.right;
+
+      if (y.parent === z) {
+        x.parent = y;
+      } else {
+        this._transplant(y, y.right);
+        y.right = z.right;
+        y.right.parent = y;
+      }
+
+      this._transplant(z, y);
+      y.left = z.left;
+      y.left.parent = y;
+      y.color = z.color;
     }
 
-    // 删除黑色节点需要补平衡
-    if (originColor === BLACK) {
-      this._deleteFix(replaceNode);
+    if (yOriginColor === BLACK) {
+      this._deleteFix(x);
     }
     return true;
   }
 
-  // ========== 内部私有工具方法（后置） ==========
-  // 判断是否红节点
+  // ==================== 内部方法（安全不报错） ====================
   _isRed(node) {
-    return node !== this.NIL && node.color === RED;
+    // ✅ 修复：防止 node 为 null 报错
+    if (!node || node === this.NIL) return false;
+    return node.color === RED;
   }
 
-  // 左旋
   _rotateLeft(x) {
     const y = x.right;
     x.right = y.left;
     if (y.left !== this.NIL) y.left.parent = x;
     y.parent = x.parent;
-    if (!x.parent) this.root = y;
+    if (x.parent === this.NIL) this.root = y;
     else if (x === x.parent.left) x.parent.left = y;
     else x.parent.right = y;
     y.left = x;
     x.parent = y;
   }
 
-  // 右旋
   _rotateRight(y) {
     const x = y.left;
     y.left = x.right;
     if (x.right !== this.NIL) x.right.parent = y;
     x.parent = y.parent;
-    if (!y.parent) this.root = x;
+    if (y.parent === this.NIL) this.root = x;
     else if (y === y.parent.right) y.parent.right = x;
     else y.parent.left = x;
     x.right = y;
-    y.parent = y;
+    y.parent = x;
   }
 
-  // 插入后修复红黑规则
   _insertFix(z) {
     while (this._isRed(z.parent)) {
       if (z.parent === z.parent.parent.left) {
-        const uncle = z.parent.parent.right;
+        let uncle = z.parent.parent.right;
         if (this._isRed(uncle)) {
           z.parent.color = BLACK;
           uncle.color = BLACK;
@@ -183,7 +183,7 @@ class RedBlackTree {
           this._rotateRight(z.parent.parent);
         }
       } else {
-        const uncle = z.parent.parent.left;
+        let uncle = z.parent.parent.left;
         if (this._isRed(uncle)) {
           z.parent.color = BLACK;
           uncle.color = BLACK;
@@ -203,7 +203,6 @@ class RedBlackTree {
     this.root.color = BLACK;
   }
 
-  // 内部：按id找节点
   _findNodeById(id) {
     const dfs = (n) => {
       if (n === this.NIL) return null;
@@ -213,68 +212,65 @@ class RedBlackTree {
     return dfs(this.root);
   }
 
-  // 节点移栽（删除辅助）
   _transplant(u, v) {
-    if (!u.parent) this.root = v;
+    if (u.parent === this.NIL) this.root = v;
     else if (u === u.parent.left) u.parent.left = v;
     else u.parent.right = v;
     v.parent = u.parent;
   }
 
-  // 找最左最小节点（后继）
-  _getMinNode(node) {
+  _minNode(node) {
     while (node.left !== this.NIL) node = node.left;
     return node;
   }
 
-  // 删除后修复黑高平衡
   _deleteFix(x) {
     while (x !== this.root && !this._isRed(x)) {
       if (x === x.parent.left) {
-        let brother = x.parent.right;
-        if (this._isRed(brother)) {
-          brother.color = BLACK;
+        let w = x.parent.right;
+        if (this._isRed(w)) {
+          w.color = BLACK;
           x.parent.color = RED;
           this._rotateLeft(x.parent);
-          brother = x.parent.right;
+          w = x.parent.right;
         }
-        if (!this._isRed(brother.left) && !this._isRed(brother.right)) {
-          brother.color = RED;
+        if (!this._isRed(w.left) && !this._isRed(w.right)) {
+          w.color = RED;
           x = x.parent;
         } else {
-          if (!this._isRed(brother.right)) {
-            brother.left.color = BLACK;
-            brother.color = RED;
-            this._rotateRight(brother);
-            brother = x.parent.right;
+          if (!this._isRed(w.right)) {
+            w.left.color = BLACK;
+            w.color = RED;
+            this._rotateRight(w);
+            w = x.parent.right;
           }
-          brother.color = x.parent.color;
+          w.color = x.parent.color;
           x.parent.color = BLACK;
-          brother.right.color = BLACK;
+          w.right.color = BLACK;
           this._rotateLeft(x.parent);
           x = this.root;
         }
       } else {
-        let brother = x.parent.left;
-        if (this._isRed(brother)) {
-          brother.color = BLACK;
+        let w = x.parent.left;
+        if (this._isRed(w)) {
+          w.color = BLACK;
           x.parent.color = RED;
           this._rotateRight(x.parent);
-          brother = x.parent.left;
+          w = x.parent.left;
         }
-        if (!this._isRed(brother.right) && !this._isRed(brother.left)) {
-          brother.color = RED;
+        if (!this._isRed(w.right) && !this._isRed(w.left)) {
+          w.color = RED;
           x = x.parent;
         } else {
-          if (!this._isRed(brother.left)) {
-            brother.right.color = BLACK;
-            brother.color = RED;
-            this._rotateLeft(brother);
-            brother = x.parent.left;
+          if (!this._isRed(w.left)) {
+            w.right.color = BLACK;
+            w.color = RED;
+            this._rotateLeft(w);
+            w = x.parent.left;
           }
-          brother.color = x.parent.color;
+          w.color = x.parent.color;
           x.parent.color = BLACK;
-          brother.left.color = BLACK;
+          w.left.color = BLACK;
           this._rotateRight(x.parent);
           x = this.root;
         }
